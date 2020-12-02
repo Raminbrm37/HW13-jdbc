@@ -44,6 +44,19 @@ public class StuMasService {
 
     }
 
+    public void deleteViaStudentID(int studentID) {
+        try (Connection connection = dbConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(
+                     "delete from stu_mas where SID_m=? ")) {
+            preparedStatement.setInt(1, studentID);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public List<stu_mas> loadAll() {
         try (Connection connection = dbConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -76,7 +89,7 @@ public class StuMasService {
             resultSet = preparedStatement.executeQuery();
             Master master = new Master();
             MasterService masterService = new MasterService();
-            System.out.println("Students for MasterName:"+(masterService.nameMaster(input)).getMLname());
+            System.out.println("Students for MasterName:" + (masterService.nameMaster(input)).getMLname());
             List<Students> students = new ArrayList<>();
             while (resultSet.next()) {
                 Students students1 = new Students();

@@ -51,7 +51,12 @@ public class ShowMenu {
             studentService.saveStu(students);
         } else if (input == 2) {
             System.out.println("plz enter StudentID");
-            studentService.delet(scanner.nextInt());
+            int  temp=scanner.nextInt();
+            stuMasService.deleteViaStudentID(temp);
+            studentService.delet(temp);
+
+          //  stuMasService.delete(scanner.nextInt(), temp);
+
         } else if (input == 3) {
             List<Students> students1 = studentService.loadStu();
             for (Students model : students1) {
