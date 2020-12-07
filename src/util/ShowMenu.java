@@ -51,11 +51,11 @@ public class ShowMenu {
             studentService.saveStu(students);
         } else if (input == 2) {
             System.out.println("plz enter StudentID");
-            int  temp=scanner.nextInt();
+            int temp = scanner.nextInt();
             stuMasService.deleteViaStudentID(temp);
             studentService.delet(temp);
 
-          //  stuMasService.delete(scanner.nextInt(), temp);
+            //  stuMasService.delete(scanner.nextInt(), temp);
 
         } else if (input == 3) {
             List<Students> students1 = studentService.loadStu();
@@ -72,15 +72,19 @@ public class ShowMenu {
             masterService.saveMas(master);
         } else if (input == 5) {
             System.out.println("plz enter MasterID");
-            masterService.deletedMas(scanner.nextInt());
+            int temp = scanner.nextInt();
+            stuMasService.deleteViaMasterID(temp);
+            masterService.deletedMas(temp);
         } else if (input == 6) {
             List<Master> masters = masterService.loadAllMas();
             for (Master model : masters) {
                 System.out.println(model);
             }
         } else if (input == 7) {
-            stuMas.setSID_m(14);
-            stuMas.setMID_m(45);
+            System.out.println("plz enter student id");
+            stuMas.setSID_m(scanner.nextInt());
+            System.out.println("plz enter master id");
+            stuMas.setMID_m(scanner.nextInt());
             stuMasService.save(stuMas);
         } else if (input == 8) {
             int temp = dispStuForMaster();

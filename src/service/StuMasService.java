@@ -56,6 +56,18 @@ public class StuMasService {
         }
 
     }
+    public void deleteViaMasterID(int masterID) {
+        try (Connection connection = dbConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(
+                     "delete from stu_mas where MID_m=? ")) {
+            preparedStatement.setInt(1, masterID);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public List<stu_mas> loadAll() {
         try (Connection connection = dbConnection.getConnection();
